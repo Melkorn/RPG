@@ -14,18 +14,20 @@ import javax.swing.JTextField;
 
 public class Window extends JFrame implements ActionListener {
 	
-	JButton bName, bRandomName, bExit, bOk;
+	JButton bName, bRandomName, bBack;
 	JLabel lShowName; 
 	JTextField tName;
 	String name;
+
+	//////////////////////////////////////////
 	public Window() {
 		
 		setSize(600,400);
-		setTitle("RPG Character Generator");
+		setTitle("RPG");
 		
 		setLayout(null);
 		
-		bName = new JButton(" New Name ");
+		bName = new JButton(" Custom Name ");
 		bName.setBounds(150, 150, 300, 50);
 		add(bName);
 		bName.addActionListener(this);
@@ -39,17 +41,23 @@ public class Window extends JFrame implements ActionListener {
 		lShowName.setBounds(150, 50, 300, 50);
 		add(lShowName);
 		
-		bExit = new JButton(" EXIT ");
-		bExit.setBounds(150, 300, 300, 50);
-		add(bExit);
-		bExit.addActionListener(this);
+		bBack = new JButton(" Back ");
+		bBack.setBounds(150, 250, 300, 50);
+		add(bBack);
+		bBack.addActionListener(this);
 		
 			
 		tName = new JTextField("");
 		tName.setBounds(150, 100, 300, 50);
 		add(tName);
 	}
-	 
+	/////////////////////////////////
+	 public static void testWindow() {
+			Window window = new Window();
+			window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			window.setVisible(true);
+	 }
+	 /////////////////////////////////
 	public static void main(String[] args) throws FileNotFoundException {
 	
 		Window window = new Window();
@@ -69,12 +77,6 @@ public class Window extends JFrame implements ActionListener {
 		
 			lShowName.setText("Name: " + name);
 			// System.out.println(new Date());
-		}
-		else if (source==bOk)
-		{
-			name = tName.getText();
-			// System.out.println(name);
-
 		}
 		else if (source==bRandomName)
 		{
@@ -113,45 +115,12 @@ public class Window extends JFrame implements ActionListener {
 			} catch (Exception ex) {
 				System.out.println("Error");
 			}
-			/* String fileName = "nameList.txt";
-			File textFile = new File(fileName); */
+				
 			
-			/*
-			 cos nie dziala
-			 try
-			{
-			Scanner in = new Scanner(textFile);
-			int a = 0;
-			while(in.hasNextLine()) {
-				a++;
-			}
-			
-			Random nRandom = new Random();
-			int lineRandom = nRandom.nextInt(a);
-			String line = null;
-			while(in.hasNextLine()) {
-				for(int i = 0; i < lineRandom; i++) {
-				line = in.nextLine();
-				}
-				System.out.println(line);
-			
-			}
-			
-			} catch (IOException ex) {
-				System.out.println(" Error");
-			} finally {
-				in.close();
-			} */
-		
-			// Random create = new Random();
-			
-			
-
 		}
-		else if (source==bExit)
-		{
+		else if (source==bBack) {
+			App2.menu();
 			dispose();
-
 		}
 		
 	}
