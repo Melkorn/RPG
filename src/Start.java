@@ -65,7 +65,7 @@ public class Start extends JFrame implements ActionListener {
 		}
 		
 		else if (source==bNewCustomCharacter) {
-			Window.testWindow();
+			NewCustomCharacter.newCustomCharacter();
 			dispose();
 		}
 		else if (source==bBack) {

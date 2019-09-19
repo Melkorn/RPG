@@ -1,10 +1,12 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class NewCustomCharacter extends JFrame implements ActionListener {
@@ -12,9 +14,13 @@ public class NewCustomCharacter extends JFrame implements ActionListener {
 	JButton bCreate, bBack;
 	JLabel lShowName; 
 	JTextField tName;
-	JCheckBox cElf, cHuman, cDwarf;
-	JCheckBox cKnight, cWizard, cDruid, cPaladin;
+	/* JCheckBox cElf, cHuman, cDwarf; 
+		JCheckBox cKnight, cWizard, cDruid, cPaladin; */
+	JRadioButton rbElf, rbHuman, rbDwarf, rbKnight, rbWizard, rbDruid, rbPaladin;
 	String name;
+	short prof, race;
+	
+	ButtonGroup bgRace, bgProf;
 	////////////////////////////////////////////////////////////////////////////////////////
 	public NewCustomCharacter(){
 		setSize(600,400);
@@ -28,43 +34,53 @@ public class NewCustomCharacter extends JFrame implements ActionListener {
 		bName.addActionListener(this); */
 		
 		// Race
+		// Race Button ////////////////////////////////
+		bgRace = new ButtonGroup();
 		
-		cElf = new JCheckBox(" Elf ");
-		cElf.setBounds(150, 100, 100, 50);
-		add(cElf);
-		cElf.addActionListener(this);
+		rbElf = new JRadioButton("Elf", false);
+		rbElf.setBounds(150, 100, 100, 50);
+		bgRace.add(rbElf);
+		add(rbElf);
+		//rbElf.addActionListener(this);
+			
+		rbHuman = new JRadioButton(" Human ", true);
+		rbHuman.setBounds(250, 100, 100, 50);
+		bgRace.add(rbHuman);
+		add(rbHuman);
+		//rbHuman.addActionListener(this);
 		
-		cHuman = new JCheckBox(" Human ");
-		cHuman.setBounds(250, 100, 100, 50);
-		add(cHuman);
-		cHuman.addActionListener(this);
+		rbDwarf = new JRadioButton(" Dwarf ", false);
+		rbDwarf.setBounds(350, 100, 100, 50);
+		bgRace.add(rbDwarf);
+		add(rbDwarf);
+		//rbDwarf.addActionListener(this);
 		
-		cDwarf = new JCheckBox(" Dwarf ");
-		cDwarf.setBounds(350, 100, 100, 50);
-		add(cDwarf);
-		cDwarf.addActionListener(this);
+		// Prof Button ////////////////
+		bgProf = new ButtonGroup();
 		
-		// Prof
+		rbKnight = new JRadioButton(" Knight ", true);
+		rbKnight.setBounds(150, 150, 75, 50);
+		bgProf.add(rbKnight);
+		add(rbKnight);
+		//rbKnight.addActionListener(this);
 		
-		cKnight = new JCheckBox(" Knight ");
-		cKnight.setBounds(150, 150, 75, 50);
-		add(cKnight);
-		cKnight.addActionListener(this);
+		rbWizard = new JRadioButton(" Wizard ", false);
+		rbWizard.setBounds(225, 150, 75, 50);
+		bgProf.add(rbWizard);
+		add(rbWizard);
+		//rbWizard.addActionListener(this);
 		
-		cWizard = new JCheckBox(" Wizard ");
-		cWizard.setBounds(225, 150, 75, 50);
-		add(cWizard);
-		cWizard.addActionListener(this);
+		rbDruid = new JRadioButton(" Druid ", false);
+		rbDruid.setBounds(300, 150, 75, 50);
+		bgProf.add(rbDruid);
+		add(rbDruid);
+		//rbDruid.addActionListener(this);
 		
-		cDruid = new JCheckBox(" Druid ");
-		cDruid.setBounds(300, 150, 75, 50);
-		add(cDruid);
-		cDruid.addActionListener(this);
-		
-		cPaladin = new JCheckBox(" Paladin ");
-		cPaladin.setBounds(375, 150, 75, 50);
-		add(cPaladin);
-		cPaladin.addActionListener(this);
+		rbPaladin = new JRadioButton(" Paladin ", false);
+		rbPaladin.setBounds(375, 150, 75, 50);
+		bgProf.add(rbPaladin);
+		add(rbPaladin);
+		//rbPaladin.addActionListener(this);
 		
 		// Buttons
 		
@@ -103,42 +119,47 @@ public class NewCustomCharacter extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
-		if (source==cElf) {
-			
-			if (cElf.isSelected()==true) {
-			
+		if (source==bCreate) {
+			if(rbHuman.isSelected()){
+				race = 0;
+				//System.out.println("Human");
 			}
-			else {
+			else if (rbElf.isSelected()) {
+				race = 1;
 				
+				//System.out.println("Elf");
 			}
-		}
-		else if (source==cHuman) {
-			//
-		}
-		else if (source==cHuman) {
-			//
-		}
-		else if (source==cDwarf) {
-			//
-		}
-		else if (source==cWizard) {
-			//
-		}
-		else if (source==cKnight) {
-			//
-		}
-		else if (source==cDruid) {
-			//
-		}
-		else if (source==cPaladin) {
-			//
-		}
-		else if (source==bCreate) {
+			else if (rbDwarf.isSelected()) {
+				race = 2;
+				
+				//System.out.println("Dwarf");
+			}
+			///
+			if(rbWizard.isSelected()) {
+				prof = 0;
+				//System.out.println("Wizard");
+			}
+			else if(rbKnight.isSelected()) {
+				prof = 1;
+				//System.out.println("Knight");
+			}
+			else if(rbDruid.isSelected()) {
+				prof = 2;
+				//System.out.println("Druid");
+			}
+			else if(rbPaladin.isSelected()) {
+				prof = 3;
+				// System.out.println("Paladin");
+			}
 			
 			dispose();
+			
 		}
+				
+		
 		else if (source==bBack) {
 			
+			Start.start();
 			dispose();
 		}
 		

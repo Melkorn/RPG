@@ -43,7 +43,7 @@ public class Hero {
 	
 	public void hello() {
 		System.out.println(" Hello there I'am " + name);
-		
+		System.out.println("test");
 		
 	}
 	
