@@ -1,6 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -17,8 +19,9 @@ public class NewCustomCharacter extends JFrame implements ActionListener {
 	/* JCheckBox cElf, cHuman, cDwarf; 
 		JCheckBox cKnight, cWizard, cDruid, cPaladin; */
 	JRadioButton rbElf, rbHuman, rbDwarf, rbKnight, rbWizard, rbDruid, rbPaladin;
-	String name;
-	short prof, race;
+	public static String name, srace, sprof;
+	// int characterInfo[] = new int[12];
+	
 	
 	ButtonGroup bgRace, bgProf;
 	////////////////////////////////////////////////////////////////////////////////////////
@@ -98,7 +101,7 @@ public class NewCustomCharacter extends JFrame implements ActionListener {
 		add(bBack);
 		bBack.addActionListener(this);
 		
-		tName = new JTextField("Character Name");
+		tName = new JTextField("Name");
 		tName.setBounds(150, 50, 300, 50);
 		add(tName);
 	}
@@ -121,37 +124,38 @@ public class NewCustomCharacter extends JFrame implements ActionListener {
 		
 		if (source==bCreate) {
 			if(rbHuman.isSelected()){
-				race = 0;
+				srace = "Human";
 				//System.out.println("Human");
 			}
 			else if (rbElf.isSelected()) {
-				race = 1;
+				srace = "Elf";
 				
 				//System.out.println("Elf");
 			}
 			else if (rbDwarf.isSelected()) {
-				race = 2;
+				srace = "Dwarf";
 				
 				//System.out.println("Dwarf");
 			}
 			///
 			if(rbWizard.isSelected()) {
-				prof = 0;
+				sprof = "Wizard";
 				//System.out.println("Wizard");
 			}
 			else if(rbKnight.isSelected()) {
-				prof = 1;
+				sprof = "Knight";
 				//System.out.println("Knight");
 			}
 			else if(rbDruid.isSelected()) {
-				prof = 2;
+				sprof = "Druid";
 				//System.out.println("Druid");
 			}
 			else if(rbPaladin.isSelected()) {
-				prof = 3;
+				sprof = "Paladin";
 				// System.out.println("Paladin");
 			}
-			
+			name =tName.getText();
+			CharacterInfoWindow.characterInfoWindow();
 			dispose();
 			
 		}

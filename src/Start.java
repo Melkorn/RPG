@@ -20,6 +20,7 @@ public class Start extends JFrame implements ActionListener {
 		setSize(600,400);
 		setTitle("RPG");
 		
+		
 		setLayout(null);
 		
 		bNewRandomCharacter = new JButton(" Create New Random Character ");
