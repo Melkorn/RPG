@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +15,7 @@ import javax.swing.JTextField;
 public class NewRandomCharacter extends JFrame implements ActionListener {
 	public static int strenght, inteligence, agility, stamina, health, height, weight, age, race, prof;
 	public static String name, srace, sprof;
-	JButton bBack;
+	JButton bBack, bSave;
 	JLabel jlName, jlStrenght, jlInteligence, jlAgility, jlStamina, jlHealth, jlHeight, jlWeight, jlAge, jlRace, jlProf;
 ////////////////////////////////////////////////////////////////////////////
 	public NewRandomCharacter() {
@@ -79,11 +80,15 @@ public class NewRandomCharacter extends JFrame implements ActionListener {
 		jlAgility.setText("Agility: " + agility);
 		add(jlAgility);
 		
+						
 		
-				
+		bSave = new JButton(" Save ");
+		bSave.setBounds(150, 200, 300, 50);
+		add(bSave);
+		bSave.addActionListener(this);		
 		
 		bBack = new JButton(" Back ");
-		bBack.setBounds(150, 200, 300, 50);
+		bBack.setBounds(150, 250, 300, 50);
 		add(bBack);
 		bBack.addActionListener(this);
 		
@@ -177,9 +182,25 @@ public static void main(String[] args) throws FileNotFoundException {
 		
 	}
 ////////////////////////////////////////////////////////////////////
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		if(source==bBack) {
+			
+			NewCustomCharacter.newCustomCharacter();
+			dispose();
+		}
+			else if (source==bSave) {
+				
+				try {
+					Save2.save2();
+				} catch (IOException e1) {
+					
+					e1.printStackTrace();
+				}
+				dispose();
+			}
+		
 		
 	}
 }
