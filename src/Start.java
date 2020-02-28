@@ -60,7 +60,7 @@ public class Start extends JFrame implements ActionListener {
 		
 		if (source==bNewRandomCharacter) {
 			
-			// dopisac 
+			NewRandomCharacter.newRandomCharacter();
 			dispose();
 			
 		}
